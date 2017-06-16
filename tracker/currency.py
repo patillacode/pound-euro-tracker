@@ -18,9 +18,12 @@ def get_currency_data():
     dates = []
     values = []
 
+    aux = 0
     for data in rates.all():
-        dates.append(data['date'])
-        values.append(data['rates'][config.CURRENCY_SYMBOL])
+        if not aux % 10:
+            dates.append(data['date'])
+            values.append(data['rates'][config.CURRENCY_SYMBOL])
+        aux += 1
 
     return {'values': values,
             'dates': dates,
