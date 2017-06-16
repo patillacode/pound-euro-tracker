@@ -55,3 +55,5 @@ I use [Flask](https://github.com/pallets/flask) as a python web framework - Than
 I use [Chart.js](https://github.com/chartjs/Chart.js) as a javascript lib for data representation - Thanks to [chartjs](https://github.com/chartjs) and all who collaborated.
 
 I use [tinydb](https://github.com/msiemens/tinydb) as a document oriented database - Thanks to [msiemens](https://github.com/msiemens/) and all who collaborated.
+
+I use [fixer.io](https://github.com/hakanensari/fixer-io/) as a currency rates api - Thanks to [hakanensari](https://github.com/hakanensari/) and all who collaborated.
