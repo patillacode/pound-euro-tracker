@@ -64,7 +64,6 @@ def populate_data(from_date):
     if start_date <= end_date:
         for n in range((end_date - start_date).days + 1):
             date = (start_date + datetime.timedelta(n)).strftime("%Y-%m-%d")
-            print 'date: {}'.format(date)
             # check if we already have data for given date
             # if so, skip, if not, insert.
             if len(rates.search(query.date == date)):
@@ -73,10 +72,8 @@ def populate_data(from_date):
             else:
                 # gather data from 3rd party
                 data = get_rates_from_api(date)
-                print 'Setting data[date] from {} to {}'.format(data.json()['date'], date)
                 data = data.json()
                 data['date'] = date
-                print data
                 rates.insert(data)
 
     return {'status': True}
