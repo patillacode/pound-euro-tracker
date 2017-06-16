@@ -25,6 +25,10 @@ def get_currency_data():
             values.append(data['rates'][config.CURRENCY_SYMBOL])
         aux += 1
 
+    # Add last (today potentially) value
+    dates.append(rates.all()[-1]['date'])
+    values.append(rates.all()[-1]['rates'][config.CURRENCY_SYMBOL])
+
     return {'values': values,
             'dates': dates,
             'currency_base': config.CURRENCY_BASE,
