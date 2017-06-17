@@ -54,7 +54,7 @@ $('#reload-button').on('click', function() {
     var d = new Date();
     var year = d.getFullYear();
 
-    $.get('http://127.0.0.1:4040/populate/'+year+'-01-01/' , function(data) {
+    $.get('http://currency.patilla.es/populate/'+year+'-01-01/' , function(data) {
         console.log('Reloading status: ', data.status);
     });
     window.location.reload();
