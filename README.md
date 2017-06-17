@@ -33,12 +33,13 @@ Small flask web app that shows the currency rate on a graph
 
 ------------
 
-### Update
+### Update data
 
 * To update the displayed data you will need to hit `http:127.0.0.1:4040/populate/<from _date>/`
 * `<from_date>` should follow the following format: `YEAR-MONTH-DAY` like `2017-05-30`
 
-This will take some time to update the database with data retrieved via `http://fixer.io/` API
+This will take some time to update the database with data retrieved via `http://fixer.io/` API since the date you provide.
+Also, there is a Reload Button on the front end, to purgue the database and re-index it with data since first of January of the current year, that hits the mentioned endpoint on the background and displays a fancy loading screen :) Try it!
 
 ------------
 

@@ -10,71 +10,27 @@
         <title>£/€ Rate</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/charts.min.js') }}"></script>
     </head>
     <body class="black-bg">
     <section id="rate-graph">
         <canvas id="canvas"></canvas>
     </section>
-
+    <section>
+        <button id="reload-button" type="button" class="btn btn-warning btn-block" role="button">Reload</button>
+    </section>
+    <div id="overlay">
+        <img id="loading" src="{{ url_for('static', filename='img/loading.gif') }}">
+        <p id="loading-message" class="text-center"><small><em>Gathering data... Please wait</em></small></p>
+    </div>
     </body>
-
-    <script>
+    <script type="text/javascript">
         data = {{data|tojson}};
         dates = data.dates;
         values = data.values;
         from_currency = data.currency_base;
         to_currency = data.currency_symbol;
-
-        var config = {
-            type: 'line',
-            data: {
-                labels: dates,
-                datasets: [{
-                    label: from_currency + "/" + to_currency + " rate",
-                    backgroundColor: 'rgba(255, 105, 0, 0.6)',
-                    borderColor: 'rgba(255, 105, 0, 0.6)',
-                    data: values,
-                    fill: false,
-                }]
-            },
-            options: {
-                responsive: true,
-                title:{
-                    display:true,
-                    text:from_currency + "/" + to_currency + " rate"
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false,
-                },
-                hover: {
-                    mode: 'nearest',
-                    intersect: true
-                },
-                scales: {
-                    xAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Date'
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: from_currency + " to " + to_currency + " rate"
-                        }
-                    }]
-                }
-            }
-        };
-
-        window.onload = function() {
-            var ctx = document.getElementById("canvas").getContext("2d");
-            window.myLine = new Chart(ctx, config);
-        };
-
     </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
 </html>

@@ -25,9 +25,10 @@ def get_currency_data():
             values.append(data['rates'][config.CURRENCY_SYMBOL])
         aux += 1
 
-    # Add last (today potentially) value
-    dates.append(rates.all()[-1]['date'])
-    values.append(rates.all()[-1]['rates'][config.CURRENCY_SYMBOL])
+    if len(rates.all()):
+        # Add last (today potentially) value
+        dates.append(rates.all()[-1]['date'])
+        values.append(rates.all()[-1]['rates'][config.CURRENCY_SYMBOL])
 
     return {'values': values,
             'dates': dates,
@@ -57,6 +58,7 @@ def populate_data(from_date):
     # select database/table
     db = TinyDB(config.DATABASE_PATH)
     rates = db.table('rates')
+    rates.purge()
     query = Query()
 
     today = datetime.datetime.today()
