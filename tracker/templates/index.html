@@ -20,6 +20,13 @@
     <section>
         <button id="reload-button" type="button" class="btn btn-warning btn-block" role="button">Reload</button>
     </section>
+    <section id="github">
+        <p class="text-center">
+            <a href="https://github.com/patillacode/pound-euro-tracker" target="_blank">
+                <img src="{{ url_for('static', filename='img/github.png') }}">
+            </a>
+        </p>
+    </section>
     <div id="overlay">
         <img id="loading" src="{{ url_for('static', filename='img/loading.gif') }}">
         <p id="loading-message" class="text-center"><small><em>Gathering data... Please wait</em></small></p>
